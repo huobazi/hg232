@@ -1,0 +1,62 @@
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html;charset=utf-8">
+<meta author="http://huobazi.aspxboy.com">
+<meta weibo="http://weibo.com/huobazi">
+<title>华为HG232配置文件破解</title>
+<script type="text/javascript">
+	function ecrypt(input) {
+	    var len = input.length;
+	    var out = "";
+	    for (var index = 0; index < len; index ++){
+	        var ch1 = input.charAt(index);
+	        var ch2 = ch1.charCodeAt(0);
+	        var ch3 = ch2 * 2;
+	        if(ch3 > 127){
+	            ch3 = ch3 - 127;
+	        }
+	        out = out + String.fromCharCode(ch3);
+	    }
+	    document.getElementById('output').value = out;
+	}
+	function decrypt(input) {
+	    var len = input.length;
+	    var out = "";
+	    for (var index = 0; index < len; index ++){
+	        var ch1 = input.charAt(index);
+	        var ch2 = ch1.charCodeAt(0);
+			var ch3;
+	        if(ch2 % 2 == 0){
+	            ch3 = ch2/2;
+	        }else{
+	            ch3 = (ch2 + 127)/2;
+	        }
+	        out = out + String.fromCharCode(ch3);
+	    }
+	    document.getElementById('output').value = out;
+	}
+</script>
+</head>
+<body>
+<h1 style="text-align:center;">华为HG232配置文件破解</h1>
+<table  style="width:960px; text-align:left;" border="0" align="center" cellpadding="0" cellspacing="0">
+	<tr>
+	    <td style="text-align:center;">
+			<div style="text-align:left;">Source:</div> 
+			<textarea name="source" id="source" wrap="soft" style="height: 260px; width: 80%"></textarea>
+			<br/><br/>
+			<input type="button" value="加密" onclick="ecrypt(document.getElementById('source').value)">
+			<input type="button" value="解密" onclick="decrypt(document.getElementById('source').value)">
+			<br/>
+			<div style="text-align:left;">Output:</div>
+			<textarea name="output" id="output" wrap="soft" style="height: 260px; width: 80%"></textarea><br>
+			<br/>
+		</td>
+	</tr>
+	<tr>
+		<td>Note：记得使用Control + A 全选，有些字符是看不到滴。</td>
+	</tr>
+</table>
+</body>
+</html>
+
